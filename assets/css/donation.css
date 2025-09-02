@@ -1,0 +1,463 @@
+/* Donation Page Styles */
+
+:root {
+    --donate-primary: #3498db; /* Blue */
+    --donate-secondary: #2ecc71; /* Green */
+    --donate-accent: #e74c3c; /* Red */
+    --donate-light-bg: #ecf0f1; /* Light Gray */
+    --donate-dark-text: #2c3e50; /* Dark Blue/Gray */
+    --donate-light-text: #7f8c8d; /* Gray */
+    --donate-card-bg: #ffffff; /* White */
+    --donate-border-radius: 12px;
+    --donate-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --donate-transition: all 0.3s ease-in-out;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--donate-light-bg);
+    color: var(--donate-dark-text);
+    line-height: 1.6;
+    padding-top: 70px; /* Adjust based on fixed header height */
+}
+
+.container {
+    max-width: 960px; /* Max width for content */
+}
+
+/* Progress Tracker */
+.progress-tracker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    position: relative;
+    padding: 0 20px; /* Add padding to align steps better */
+}
+
+.progress-tracker::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 30px; /* Adjust based on step size */
+    right: 30px; /* Adjust based on step size */
+    height: 3px;
+    background: var(--donate-light-text);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.progress-step {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--donate-card-bg);
+    border: 3px solid var(--donate-light-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--donate-dark-text);
+    position: relative;
+    z-index: 2;
+    transition: var(--donate-transition);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progress-step.active {
+    background: var(--donate-primary);
+    border-color: var(--donate-primary);
+    color: white;
+}
+
+.progress-step.completed {
+    background: var(--donate-secondary);
+    border-color: var(--donate-secondary);
+    color: white;
+}
+
+.progress-step.completed i {
+    font-size: 1.5rem;
+}
+
+/* Card Styles */
+.donation-card, .payment-summary, .confirmation-card, .next-steps-card {
+    background: var(--donate-card-bg);
+    border-radius: var(--donate-border-radius);
+    box-shadow: var(--donate-box-shadow);
+    padding: 40px;
+    margin-bottom: 30px;
+}
+
+/* Section Titles */
+.donation-amounts h2, .donation-details h2, .payment-methods h2, .thank-you-section h1, .next-steps h3 {
+    color: var(--donate-primary);
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Amount Selection */
+.amount-card {
+    border: 2px solid var(--donate-light-bg);
+    border-radius: var(--donate-border-radius);
+    padding: 30px;
+    text-align: center;
+    transition: var(--donate-transition);
+    cursor: pointer;
+    margin-bottom: 20px; /* Added margin */
+}
+
+.amount-card:hover, .amount-card.selected {
+    border-color: var(--donate-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.amount-card.selected {
+    background: var(--donate-light-bg);
+}
+
+.amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--donate-primary);
+    margin-bottom: 0.5rem;
+}
+
+.amount-card p {
+    color: var(--donate-light-text);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.custom-amount {
+    max-width: 500px; /* Wider input */
+    margin: 40px auto 0; /* Spacing */
+}
+
+.custom-amount label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.custom-amount .input-group input {
+    border-radius: var(--donate-border-radius) 0 0 var(--donate-border-radius);
+    padding: 12px 15px;
+    font-size: 1.1rem;
+}
+
+.custom-amount .input-group-text {
+    border-radius: var(--donate-border-radius) 0 0 var(--donate-border-radius);
+    background-color: var(--donate-primary);
+    color: white;
+    border-color: var(--donate-primary);
+    font-size: 1.1rem;
+    padding: 12px 15px;
+}
+
+.custom-amount .btn {
+     border-radius: 0 var(--donate-border-radius) var(--donate-border-radius) 0;
+     padding: 12px 20px;
+     font-size: 1.1rem;
+     background-color: var(--donate-primary);
+     border-color: var(--donate-primary);
+     transition: var(--donate-transition);
+}
+
+.custom-amount .btn:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+/* Donation Details Form */
+.donation-details .form-label {
+     font-weight: 600;
+     margin-bottom: 8px;
+}
+
+.donation-details .form-control, .donation-details .form-select {
+    border-radius: var(--donate-border-radius);
+    padding: 12px 15px;
+    border-color: #ddd;
+    transition: border-color 0.3s ease;
+}
+
+.donation-details .form-control:focus, .donation-details .form-select:focus {
+     border-color: var(--donate-primary);
+     box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+}
+
+.donation-details .btn-primary, .donation-details .btn-outline-secondary {
+    padding: 12px 25px;
+    border-radius: 30px; /* Pill shape */
+    font-size: 1.1rem;
+    transition: var(--donate-transition);
+}
+
+.donation-details .btn-primary {
+     background-color: var(--donate-primary);
+     border-color: var(--donate-primary);
+}
+
+.donation-details .btn-primary:hover {
+     background-color: #2980b9;
+     border-color: #2980b9;
+     transform: translateY(-2px);
+}
+
+.donation-details .btn-outline-secondary {
+    border-color: var(--donate-light-text);
+    color: var(--donate-light-text);
+}
+
+.donation-details .btn-outline-secondary:hover {
+    background-color: var(--donate-light-text);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Payment Summary */
+.payment-summary {
+    background: var(--donate-light-bg);
+    border: 1px solid #ddd;
+    padding: 30px;
+}
+
+.payment-summary h3 {
+    color: var(--donate-dark-text);
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.payment-summary span {
+    font-size: 1.1rem;
+}
+
+.payment-summary strong {
+    font-size: 1.1rem;
+    color: var(--donate-primary);
+}
+
+.payment-summary hr {
+    margin: 20px 0;
+}
+
+.payment-summary .alert {
+    margin-top: 20px;
+}
+
+/* Payment Method Section */
+.payment-methods h3 {
+    color: var(--donate-dark-text);
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.payment-method {
+    border: 2px solid var(--donate-light-bg);
+    border-radius: var(--donate-border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: var(--donate-transition);
+    background: var(--donate-card-bg);
+}
+
+.payment-method:hover, .payment-method.selected {
+    border-color: var(--donate-primary);
+    background: var(--donate-light-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.payment-method img {
+    height: 40px;
+    object-fit: contain;
+}
+
+.payment-method h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--donate-dark-text);
+}
+
+.payment-method p {
+    font-size: 0.9rem;
+    color: var(--donate-light-text);
+    margin: 0;
+}
+
+/* Thank You Page */
+.thank-you-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.confirmation-card {
+    padding: 50px;
+}
+
+.confirmation-icon {
+    font-size: 5rem;
+    color: var(--donate-secondary);
+    margin-bottom: 30px;
+}
+
+.thank-you-section h1 {
+    color: var(--donate-secondary);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.thank-you-section .lead {
+    color: var(--donate-dark-text);
+    font-size: 1.2rem;
+}
+
+.share-options {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.share-options h4 {
+    color: var(--donate-dark-text);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.share-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    border-radius: 30px;
+    margin: 0 10px;
+    color: white !important;
+    text-decoration: none;
+    transition: var(--donate-transition);
+    font-size: 1rem;
+}
+
+.share-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.share-button i {
+    margin-right: 8px;
+}
+
+.share-button.facebook { background: #1877f2; }
+.share-button.twitter { background: #1da1f2; }
+.share-button.whatsapp { background: #25d366; }
+
+.next-steps {
+    margin-top: 60px;
+}
+
+.next-steps h3 {
+    color: var(--donate-dark-text);
+    margin-bottom: 40px;
+}
+
+.next-steps-card {
+    background: var(--donate-light-bg);
+    border: none; /* Remove default border */
+    padding: 30px;
+    height: 100%; /* Equal height cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: var(--donate-transition);
+}
+
+.next-steps-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.next-steps-card i {
+    font-size: 3rem;
+    color: var(--donate-primary);
+    margin-bottom: 20px;
+}
+
+.next-steps-card h4 {
+    font-size: 1.3rem;
+    color: var(--donate-dark-text);
+    margin-bottom: 15px;
+}
+
+.next-steps-card p {
+    color: var(--donate-light-text);
+    margin-bottom: 20px;
+}
+
+.next-steps-card .btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: var(--donate-transition);
+}
+
+/* Utility Classes */
+.text-primary { color: var(--donate-primary) !important; }
+.text-secondary { color: var(--donate-secondary) !important; }
+.text-accent { color: var(--donate-accent) !important; }
+.text-light-text { color: var(--donate-light-text) !important; }
+.bg-light-bg { background-color: var(--donate-light-bg) !important; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .progress-tracker {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+        padding: 0;
+    }
+
+    .progress-tracker::before {
+        content: none; /* Remove horizontal line on small screens */
+    }
+
+    .progress-step {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        border-width: 2px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+     .progress-step.completed i {
+        font-size: 1.2rem;
+    }
+
+    .donation-card, .payment-summary, .confirmation-card, .next-steps-card {
+        padding: 25px;
+    }
+
+    .donation-amounts h2, .donation-details h2, .payment-methods h2, .thank-you-section h1, .next-steps h3 {
+         margin-bottom: 30px;
+         font-size: 1.8rem;
+    }
+
+    .amount {
+        font-size: 2rem;
+    }
+
+    .share-button {
+        margin: 5px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .next-steps-card {
+        margin-bottom: 20px;
+    }
+} 
